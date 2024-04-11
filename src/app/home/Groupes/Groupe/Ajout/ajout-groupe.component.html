@@ -1,0 +1,59 @@
+<div class="container">
+    <section>
+        <div class="my-5">
+            <div class="card" *ngIf="groupe()">
+                <div class="card-body">
+                    <p class="">{{groupe().displayName}}</p>
+                    <p>{{groupe().description}}</p>
+                    <p>{{groupe().id}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="my-4" *ngIf="formulaire">
+        <header>
+            <h1>Créer</h1>
+        </header>
+
+        <form class="form" [formGroup]="formulaire" (ngSubmit)="creer()">
+
+            <div class="mb-3">
+                <label for="displayName" class="form-label">Nom</label>
+                <input type="text" formControlName="displayName" class="form-control form-control-lg" id="displayName"
+                    placeholder="Nom">
+
+                <small
+                    *ngIf="formulaire?.get('displayName').errors?.['required'] && formulaire?.get('displayName').touched">
+                    *Champ obligatoire.
+                </small>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" formControlName="description" class="form-control form-control-lg" id="description"
+                    placeholder="Description">
+
+                <small
+                    *ngIf="formulaire?.get('description').errors?.['required'] && formulaire?.get('description').touched">
+                    *Champ obligatoire.
+                </small>
+            </div>
+
+            <div class="mb-3">
+                <label for="mailNickname" class="form-label">Surnom</label>
+                <input type="text" formControlName="mailNickname" class="form-control form-control-lg" id="mailNickname"
+                    placeholder="mailNickname">
+
+                <small
+                    *ngIf="formulaire?.get('mailNickname').errors?.['required'] && formulaire?.get('mailNickname').touched">
+                    *Champ obligatoire.
+                </small>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary btn-lg" type="submit">Creer</button>
+            </div>
+        </form>
+    </section>
+</div>

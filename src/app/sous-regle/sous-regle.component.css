@@ -1,0 +1,16 @@
+.btn-gestion-regles {
+    display: flexbox;
+}
+
+.sous-regle {
+    position: relative;
+    margin-left: 75px;
+}
+
+.liste-params {
+    background-color: white;
+}
+
+.ng-select .ng-dropdown-panel {
+    background-color: white;
+}

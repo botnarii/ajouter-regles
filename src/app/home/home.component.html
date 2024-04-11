@@ -1,0 +1,47 @@
+<div *ngIf="!loginDisplay">
+    <p class="welcome">Welcome to the MSAL.js v3 Angular Quickstart!</p>
+    <p>Please sign-in to see your profile information.</p>
+</div>
+
+<div *ngIf="loginDisplay">
+    <!-- <button type="button" class="btn btn-primary" (click)="createUser()">Creer user</button>
+    <button type="button" class="btn btn-primary" (click)="getUserFromApi()">Get user</button> -->
+
+    <section class="container my-4">
+        <header>
+            <h1>Rechercher un usager</h1>
+        </header>
+    
+        <form class="form" [formGroup]="formulaireAjout" (ngSubmit)="rechercherUser()">
+    
+            <div class="mb-3">
+                <label for="displayName" class="form-label">Courriel</label>
+                <input type="text" formControlName="displayName" class="form-control form-control-lg"
+                    id="displayName" placeholder="Nom">
+    
+                <small
+                    *ngIf="formulaireAjout.get('displayName').errors?.['required'] && formulaireAjout.get('displayName').touched">
+                    *Champ obligatoire.
+                </small>
+            </div>
+    
+            <div class="mb-3">
+                <button class="btn btn-primary btn-lg" type="submit">Rechercher</button>
+            </div>
+        </form>
+    
+        <div class="my-5">
+            <div class="card" *ngIf="objetRecherche()">
+                <div class="card-body">
+                    <p class="">{{objetRecherche().displayName}}</p>
+                    <p>{{objetRecherche().givenName}}</p>
+                    <p>{{objetRecherche().mail}}</p>
+                    <p>{{objetRecherche().userPrincipalName}}</p>
+                    <p>{{objetRecherche().userPidrincipalName}}</p>
+                    <p>{{objetRecherche().id}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</div>

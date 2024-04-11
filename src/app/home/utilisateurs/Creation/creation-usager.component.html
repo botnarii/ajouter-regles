@@ -1,0 +1,96 @@
+<section class="container my-4" *ngIf="etapeInvitation()">
+    <header>
+        <h1>Inviter un usager</h1>
+    </header>
+    <div class="mb-3">
+        <button class="btn btn-primary btn-lg" type="submit" (click)="allerALEtapeCreer()">Créer un nouvel
+            utilisateur</button>
+    </div>
+
+    <form class="form" [formGroup]="formulaireAjout" (ngSubmit)="inviterUser()">
+
+        <div class="mb-3">
+            <label for="userPrincipalName" class="form-label">Courriel</label>
+            <input type="email" formControlName="userPrincipalName" class="form-control form-control-lg"
+                id="userPrincipalName" placeholder="abc@bcd.com">
+
+            <small
+                *ngIf="formulaireAjout.get('userPrincipalName').errors?.['required'] && formulaireAjout.get('userPrincipalName').touched">
+                *Champ obligatoire.
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-primary btn-lg" type="submit">Inviter</button>
+        </div>
+    </form>
+</section>
+
+<section class="container my-4" [ngClass]="formStatus" *ngIf="etapeCreation()">
+    <header>
+        <h1>Creation usager</h1>
+    </header>
+
+    <div class="mb-3">
+        <button class="btn btn-primary btn-lg" type="submit" (click)="allerALEtapeInviter()">Inviter un utilisateur</button>
+    </div>
+
+    <form class="form" [formGroup]="formulaireAjout" (ngSubmit)="createUser()">
+        <div class="form-check">
+            <label for="accountEnabled" class="form-check-label">Est active: </label>
+            <input type="checkbox" id="accountEnabled" formControlName="accountEnabled" class="form-check-input" />
+
+            <small
+                *ngIf="formulaireAjout.get('accountEnabled').errors?.['required'] && formulaireAjout.get('accountEnabled').touched">
+                *Champ obligatoire.
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label for="displayName" class="form-label">Nom</label>
+            <input type="text" formControlName="displayName" class="form-control form-control-lg" id="displayName"
+                placeholder="Nom">
+
+            <small
+                *ngIf="formulaireAjout.get('displayName').errors?.['required'] && formulaireAjout.get('displayName').touched">
+                *Champ obligatoire.
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label for="mailNickname" class="form-label">Logon</label>
+            <input type="text" formControlName="mailNickname" class="form-control form-control-lg" id="mailNickname"
+                placeholder="Logon">
+
+            <small
+                *ngIf="formulaireAjout.get('mailNickname').errors?.['required'] && formulaireAjout.get('mailNickname').touched">
+                *Champ obligatoire.
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label for="userPrincipalName" class="form-label">Courriel</label>
+            <input type="email" formControlName="userPrincipalName" class="form-control form-control-lg"
+                id="userPrincipalName" placeholder="abc@bcd.com">
+
+            <small
+                *ngIf="formulaireAjout.get('userPrincipalName').invalid && formulaireAjout.get('userPrincipalName').touched">
+                *Champ obligatoire.
+            </small>
+        </div>
+
+        <div class="mb-3" formGroupName="passwordProfile">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" formControlName="password" class="form-control form-control-lg" id="password">
+
+            <small
+                *ngIf="formulaireAjout.get('passwordProfile.password').errors?.['required'] && formulaireAjout.get('passwordProfile.password').touched">
+                *Champ obligatoire.
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-primary btn-lg" type="submit">Créer</button>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,44 @@
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div style="width: 400px;">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Filtre</span>
+            <input type="text" [(ngModel)]="valeur" (keyup)="onKey($event)" class="form-control"
+              placeholder="abc@bcd.com" aria-label="email" aria-describedby="addon-wrapping">
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary btn-lg float-end" type="submit" (click)="creerUsager()">Créer un nouvel
+          utilisateur</button>
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Courriel</th>
+        <th scope="col">Id</th>
+        <th scope="col">Action Usager</th>
+        <th scope="col">Action Rôle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usager of listeResultat(); index as i;">
+        <th scope="row" class="clickable" (click)="afficherFormulaireUsager(usager.id)">{{i+1}}</th>
+        <td scope="row" class="clickable" (click)="afficherFormulaireUsager(usager.id)">{{usager.displayName}}</td>
+        <td scope="row" class="clickable" (click)="afficherFormulaireUsager(usager.id)">{{usager.mail}}</td>
+        <td scope="row" class="clickable" (click)="afficherFormulaireUsager(usager.id)">{{usager.id}}</td>
+        <td scope="row"><button type="button" class="btn btn-danger" (click)="supprimerUsager(usager.id)">X</button>
+        </td>
+        <td scope="row">
+          <button type="button" class="btn btn-primary" (click)="assignerRoleUsager(usager.id)">+</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

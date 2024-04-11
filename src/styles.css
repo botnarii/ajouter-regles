@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* .liste-params {
+    max-width: 275px;
+} */
+
+.ng-select .ng-dropdown-panel {
+    background-color: white;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+    background-color: #f5faff;
+    color: #333;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    background-color: #fff;
+    color: rgba(0,0,0,.87);
+    padding: 8px 10px;
+}
+
+.ng-select div, .ng-select input, .ng-select span {
+    box-sizing: border-box;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected, .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
+    color: #333;
+    background-color: #ebf5ff;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-selectionne {
+    background-color: blue!important;
+}

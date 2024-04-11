@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'bre-angular' title`, () => {
+  it(`should have the 'interface-creation-regles-json' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('bre-angular');
+    expect(app.title).toEqual('interface-creation-regles-json');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, bre-angular');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, interface-creation-regles-json');
   });
 });

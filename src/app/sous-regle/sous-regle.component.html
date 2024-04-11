@@ -1,0 +1,65 @@
+<div [formGroup]="form" class="my-5 border-primary border-top">
+    <ng-container formArrayName="regles">
+        <ng-container *ngFor="let formRegle of regles?.controls; let i = index">
+            <div class="row my-3" [formGroupName]="i">
+                <div class="col-2">
+                    <div class="btn-gestion-regles">
+                        <button class="btn btn-secondary me-1 btn-regle" type="button"
+                            (click)="ajouterRegle(i, 1, $event)">Ou</button>
+                        <button class="btn btn-secondary ms-1 btn-regle" type="button"
+                            (click)="ajouterRegle(i, 2, $event)">Et</button>
+                    </div>
+                </div>
+                <div class="col"><input class="form-control" formControlName="nom" placeholder="Le nom"
+                        oninput="this.value = this.value.toUpperCase()"></div>
+                <div class="col"><input class="form-control" formControlName="retour"
+                        placeholder="Le retour de la regle" oninput="this.value = this.value.toUpperCase()"></div>
+                <div class="col"><input class="form-control" formControlName="echec"
+                        placeholder="Le retour en cas d'echec" oninput="this.value = this.value.toUpperCase()"></div>
+            </div>
+
+            <div class="row" [formGroupName]="i">
+                <div class="col-2"></div>
+                <div class="col"><textarea class="form-control" formControlName="action"
+                        placeholder="Le retour de la regle en tant qu'expression logique/arithmetique"></textarea>
+                </div>
+            </div>
+
+            <!-- <div class="row my-3" [formGroupName]="i">
+                <div class="col" *ngIf="listeProprietesParametres.length > 0">
+                    <ng-select formControlName="propriete" class="form-select liste-params">
+                        <ng-option *ngFor="let item of listeProprietesParametres" [value]="item">{{item}}</ng-option>
+                     </ng-select>
+                </div>
+            </div> -->
+            <div class="row my-3" [formGroupName]="i">
+                <div class="col-2">
+
+                </div>
+
+                <div class="col-4">
+                    <input class="form-control" formControlName="propriete" placeholder="propriete">
+                </div>
+                <!-- <div class="col" *ngIf="listeProprietesParametres.length > 0">
+                    <ng-select formControlName="propriete" class="form-select liste-params">
+                        <ng-option *ngFor="let item of listeProprietesParametres" [value]="item">{{item}}</ng-option>
+                     </ng-select>
+                </div>             -->
+
+                <div class="col-2">
+                    <select formControlName="operateur" class="form-select">
+                        <option *ngFor="let op of operateursArithmetiques" [ngValue]="op">
+                            {{ op }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-2"><input class="form-control" formControlName="valeur" placeholder="valeur"></div>
+                <div class="col-2"><button class="btn" (click)="supprimerRegle(i)">Supprimer</button></div>
+            </div>
+            <div class="sous-regle">
+                <app-sous-regle [form]="formGroupEnfant(i)" [regles]="reglesEnfant(i)" [operateur]="operateur"
+                    [listeProprietesParametres]="listeProprietesParametres"></app-sous-regle>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>

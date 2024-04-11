@@ -1,0 +1,66 @@
+<div class="container">
+    <section class="my-4" *ngIf="formulaire">
+        <header>
+            <h1>Modifier</h1>
+        </header>
+
+        <form class="form" [formGroup]="formulaire" (ngSubmit)="modifier()">
+
+            <div class="mb-3">
+                <label for="displayName" class="form-label">Nom</label>
+                <input type="text" formControlName="displayName" class="form-control form-control-lg"
+                    id="displayName" placeholder="Nom">
+
+                <small
+                    *ngIf="formulaire?.get('displayName').errors?.['required'] && formulaire?.get('displayName').touched">
+                    *Champ obligatoire.
+                </small>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" formControlName="description" class="form-control form-control-lg"
+                    id="description" placeholder="Description">
+
+                <small
+                    *ngIf="formulaire?.get('description').errors?.['required'] && formulaire?.get('description').touched">
+                    *Champ obligatoire.
+                </small>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary btn-lg" type="submit">Modifier</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="my-4" *ngIf="listeMembresComplete()">
+        <header>
+            <h1>Gerer memebres</h1>
+        </header>
+
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Courriel</th>
+                <th scope="col">Id</th>
+                <th scope="col">Est membre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let membre of listeMembresComplete(); index as i;">
+                <th scope="row">{{i+1}}</th>
+                <td scope="row">{{membre.displayName}}</td>
+                <td scope="row">{{membre.mail}}</td>
+                <td scope="row">{{membre.id}}</td>
+                <td scope="row">
+                    <input class="form-check-input" type="checkbox" [value]="membre.estMemebre" [checked]="membre.estMemebre" [disabled]="enTraitement()" (change)="onMembreChange($event, membre.id)">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    
+    </section>
+</div>
